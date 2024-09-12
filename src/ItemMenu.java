@@ -3,27 +3,30 @@ public class ItemMenu {
     private String categoria;
     private double preco;
 
-    //Construct
     public ItemMenu(String nome, String categoria, double preco) {
         this.nome = nome;
         this.categoria = categoria;
         this.preco = preco;
     }
 
-    public String getnome(){
+    public String getNome(){
         return nome;
     }
 
-    public String getcategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public double getpreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void getDetalhesItem () {
-        System system = null;
-        System.out.println("Categoria: "+categoria + "\n"+ nome + "R$: "+preco);
+    public void getDetalhesItem() {
+        System.out.println("Categoria: " + categoria + "\nNome: " + nome + " - R$: " + preco);
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - R$: " + preco + " (" + categoria + ")";
     }
 }

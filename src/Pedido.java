@@ -1,35 +1,36 @@
 public class Pedido {
-    private Item[] itens;
+    private ItemMenu[] itens;
     private int count;
+    private String status;
 
     public Pedido(int tamanho) {
-        itens = new Item[tamanho];  // Initialize array with specified size
+        itens = new ItemMenu[tamanho];
         count = 0;
+        status = "Em preparo";
     }
 
-    public void adicionarItem(Item item) {
-        if (count < itens.length) {  // Correct length property
+    public void adicionarItem(ItemMenu item) {
+        if (count < itens.length) {
             itens[count++] = item;
         } else {
             System.out.println("O quadro de itens está cheio. Não é possível adicionar mais itens.");
         }
     }
 
-    // Calcula o total do pedido
     public double calcularTotal() {
         double total = 0;
-        for (int i = 0; i < count; i++) {  // Correct loop syntax
-            total += itens[i].getPreco();  // Ensure method name is correct
+        for (int i = 0; i < count; i++) {
+            total += itens[i].getPreco();
         }
         return total;
     }
 
-    // Exibe os itens do pedido
-    public void exibirItens() {
-        System.out.println("Itens do pedido:");
-        for (int i = 0; i < count; i++) {
-            System.out.println(itens[i]);  // Assumes Item class has a proper toString method
-        }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     @Override
@@ -37,9 +38,10 @@ public class Pedido {
         StringBuilder sb = new StringBuilder();
         sb.append("Pedido:\n");
         for (int i = 0; i < count; i++) {
-            sb.append(itens[i].toString()).append("\n");  // Assumes Item class has a proper toString method
+            sb.append(itens[i].toString()).append("\n");
         }
-        sb.append("Total: ").append(calcularTotal());
+        sb.append("Total: ").append(calcularTotal()).append("\n");
+        sb.append("Status: ").append(status);
         return sb.toString();
     }
 }
